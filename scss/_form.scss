@@ -1,0 +1,74 @@
+/* =========================================================
+   Forme (Bootstrap + CF7) — prilagođavanje .form-control i labela
+   ========================================================= */
+
+.form-label {
+	font-weight: 600;
+	color: $brand-navy;
+	margin-bottom: 0.35rem;
+	font-size: 0.9rem;
+}
+
+.form-control,
+.wpcf7-form .form-control,
+.wpcf7-form textarea.form-control {
+	border-radius: $home-card-radius;
+	border: 1px solid rgba($dark, 0.18);
+	padding: 0.45rem 0.85rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: $dark;
+	background-color: #fff;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+	&::placeholder {
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: rgba($dark, 0.45);
+		opacity: 1;
+	}
+
+	&::-webkit-input-placeholder {
+		font-size: 0.875rem;
+	}
+
+	&::-moz-placeholder {
+		font-size: 0.875rem;
+	}
+
+	&:focus {
+		border-color: rgba($primary, 0.55);
+		box-shadow: 0 0 0 0.2rem rgba($primary, 0.15);
+		outline: 0;
+	}
+
+	&:disabled,
+	&[readonly] {
+		background-color: rgba($light, 0.85);
+		opacity: 1;
+	}
+}
+
+textarea.form-control,
+.wpcf7-form textarea.form-control {
+	min-height: 8rem;
+	resize: vertical;
+}
+
+.wpcf7-form .mb-3>p {
+	margin-bottom: 0;
+}
+
+.wpcf7-form .wpcf7-not-valid-tip {
+	font-size: 0.8125rem;
+	margin-top: 0.25rem;
+	color: $danger;
+}
+
+.wpcf7-form .wpcf7-response-output {
+	margin: 1rem 0 0;
+	padding: 0.75rem 1rem;
+	border-radius: $home-card-radius;
+	font-size: 0.9rem;
+	border-width: 1px;
+}

@@ -1,0 +1,95 @@
+/* Početna — sadržaj ispod heroa (npr. „Prepoznaješ li se?“) */
+
+/* Zajednički naslov kartica u obe sekcije */
+.home-card__title {
+	font-size: 1.1rem;
+	color: inherit;
+	margin-bottom: .55rem;
+	line-height: 1.3;
+}
+
+.home-card__icon-img {
+	display: block;
+	width: 35px;
+	height: auto;
+}
+
+/* Manje ikone (npr. sekcija „Kako možemo da pomognemo”) */
+.home-card__icon-img--sm {
+	width: 25px;
+}
+
+/* Plavi kvadrat za ikonu — usluge, facts blok, … */
+.home-card__icon-wrap {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.5rem;
+	height: 3.5rem;
+	margin-bottom: 1.5rem;
+	background: rgba(#bfdbfe, .4);
+	border-radius: $home-card-radius;
+}
+
+
+
+/* Tekst u home karticama (prepoznaješ, usluge, izdvajanje, …) */
+.home-card__text {
+	font-size: .85rem;
+	line-height: 1.55;
+	color: rgba($dark, .72);
+}
+
+/* Zajednička površina kartica na početnoj (prepoznaješ / usluge) */
+.home-card {
+	background: #fff;
+	border: $home-card-border;
+	border-radius: $home-card-radius;
+	box-shadow: $home-card-shadow;
+	transition: transform .2s ease, box-shadow .2s ease;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: $home-card-shadow-hover;
+	}
+}
+
+.home-recognize-card {
+	padding: 1.5rem 1.35rem 1.5rem 1.5rem;
+	border-left: 4px solid $primary;
+}
+
+.home-services-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 2rem;
+}
+
+.home-recognize-card__icon {
+	margin-bottom: 1.5rem;
+}
+
+/* „Kako možemo da pomognemo“ — usluge */
+
+.home-services {
+	background: #fff;
+}
+
+.home-services-card__subtitle {
+	font-size: .85rem;
+	font-style: italic;
+	color: rgba($dark, .45);
+	margin-bottom: .85rem;
+}
+
+/* Strelica uz Bootstrap .btn (outline / primary) na početnoj */
+.home-section__cta-arrow {
+	display: inline-block;
+	transition: transform .2s ease;
+}
+
+.btn:hover .home-section__cta-arrow {
+	transform: translateX(3px);
+}

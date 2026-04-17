@@ -1,0 +1,14 @@
+/*
+Theme Name: Startuj Legalno
+Author: E-SEO TEAM
+Author URI: https://e-seo.team/
+Description: Startuj Legalno
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: startuj-legalno
+Tags:
+*/
+
+/* Glavni stil se gradi u style.min.css (Sass). Ovaj fajl mora postojati da WordPress ispravno učita temu i šablone stranica. */
+@import url("style.min.css");

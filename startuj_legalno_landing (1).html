@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startuj Legalno — Legalni start digitalnog biznisa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1F4788;
+    --blue-mid: #2d5fa8;
+    --blue-light: #e8f0fa;
+    --blue-pale: #f4f7fd;
+    --accent: #c8922a;
+    --text: #1a1a2e;
+    --text-muted: #5a6070;
+    --white: #ffffff;
+    --border: #dde4f0;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex; align-items: baseline; gap: 0.5rem;
+  }
+  .nav-brand-main {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.01em;
+  }
+  .nav-brand-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--blue-mid); color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 6rem 2rem 4rem;
+    background: linear-gradient(160deg, var(--blue-pale) 0%, #ffffff 55%, #fdf8f2 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(31,71,136,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,146,42,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(200,146,42,0.1);
+    padding: 0.35rem 0.85rem; border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before { content: '◆'; font-size: 0.5rem; }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--blue);
+  }
+  .hero-lead {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+  .hero-checks {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.65rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-checks li {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.95rem; color: var(--text);
+  }
+  .hero-checks li::before {
+    content: '✓';
+    display: flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; min-width: 22px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(31,71,136,0.25);
+  }
+  .btn-primary:hover {
+    background: var(--blue-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(31,71,136,0.3);
+  }
+  .btn-ghost {
+    color: var(--blue);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-ghost:hover { text-decoration: underline; }
+
+  /* Hero card */
+  .hero-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 48px rgba(31,71,136,0.12);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    border-radius: 16px 16px 0 0;
+  }
+  .hcard-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .hcard-price {
+    display: flex; align-items: baseline; gap: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+  .hcard-price-num {
+    font-family: var(--serif);
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--blue); line-height: 1;
+  }
+  .hcard-price-unit {
+    font-size: 0.9rem; color: var(--text-muted);
+  }
+  .hcard-note {
+    font-size: 0.8rem; color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .hcard-divider {
+    height: 1px; background: var(--border);
+    margin: 1.25rem 0;
+  }
+  .hcard-features {
+    list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+  .hcard-features li {
+    font-size: 0.875rem; color: var(--text);
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    line-height: 1.4;
+  }
+  .hcard-features li span.icon {
+    color: var(--blue); font-size: 0.75rem; margin-top: 2px; flex-shrink: 0;
+  }
+  .hcard-cta {
+    display: block; text-align: center;
+    background: var(--blue);
+    color: white; font-weight: 600; font-size: 0.9rem;
+    padding: 0.85rem; border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .hcard-cta:hover { background: var(--blue-mid); }
+  .hcard-consult {
+    text-align: center; margin-top: 0.75rem;
+    font-size: 0.8rem; color: var(--text-muted);
+  }
+  .hcard-consult strong { color: var(--text); }
+
+  /* ── SECTION BASE ── */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; line-height: 1.25;
+    color: var(--text); margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .section-lead {
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.7; max-width: 560px;
+  }
+
+  /* ── ZA KOGA ── */
+  .forwhom { background: var(--blue-pale); }
+  .forwhom-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .forwhom-card {
+    background: white; border-radius: 12px;
+    padding: 1.75rem; border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .forwhom-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(31,71,136,0.1);
+  }
+  .forwhom-icon {
+    font-size: 1.75rem; margin-bottom: 1rem;
+  }
+  .forwhom-card h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--text); margin-bottom: 0.5rem;
+  }
+  .forwhom-card p {
+    font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;
+  }
+
+  /* ── KAKO RADI ── */
+  .how { background: white; }
+  .steps {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    z-index: 0;
+  }
+  .step {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 1rem;
+    position: relative; z-index: 1;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--blue); color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.3rem; font-weight: 700;
+    margin-bottom: 1.25rem;
+    border: 3px solid white;
+    box-shadow: 0 4px 16px rgba(31,71,136,0.25);
+  }
+  .step:last-child .step-num { background: var(--accent); }
+  .step h3 {
+    font-size: 0.95rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .step p {
+    font-size: 0.825rem; color: var(--text-muted); line-height: 1.5;
+  }
+
+  /* ── O NAMA ── */
+  .about { background: var(--blue-pale); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: white; border: 1px solid var(--border);
+    padding: 0.5rem 1rem; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 500; color: var(--blue);
+    margin-bottom: 1.5rem;
+  }
+  .about-text p {
+    font-size: 0.95rem; color: var(--text-muted);
+    line-height: 1.8; margin-bottom: 1rem;
+  }
+  .about-text p strong { color: var(--text); }
+  .about-credentials {
+    display: flex; flex-direction: column; gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+  .credential {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: white; border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .credential-icon {
+    font-size: 1.1rem; flex-shrink: 0; margin-top: 1px;
+  }
+  .credential-text { font-size: 0.85rem; color: var(--text); line-height: 1.5; }
+  .credential-text strong { color: var(--blue); display: block; font-size: 0.8rem; font-weight: 600; }
+
+  .about-quote {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(31,71,136,0.08);
+    position: relative;
+  }
+  .about-quote::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 6rem; line-height: 0.7;
+    color: var(--blue-light);
+    position: absolute; top: 1.5rem; left: 1.75rem;
+  }
+  .about-quote blockquote {
+    font-family: var(--serif);
+    font-size: 1.1rem; font-style: italic;
+    line-height: 1.75; color: var(--text);
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .quote-author {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .qa-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-family: var(--serif);
+    font-size: 1rem; font-weight: 700;
+  }
+  .qa-info { font-size: 0.825rem; }
+  .qa-info strong { display: block; color: var(--text); font-weight: 600; }
+  .qa-info span { color: var(--text-muted); }
+
+  /* ── BLOG ── */
+  .blog { background: white; }
+  .blog-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
+    margin-top: 3rem;
+  }
+  .blog-card {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(31,71,136,0.1);
+  }
+  .blog-card-top {
+    background: var(--blue-pale);
+    padding: 1.5rem 1.5rem 1rem;
+  }
+  .blog-tag {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--blue);
+    background: var(--blue-light);
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    display: inline-block; margin-bottom: 0.75rem;
+  }
+  .blog-card h3 {
+    font-family: var(--serif);
+    font-size: 1rem; font-weight: 600; line-height: 1.4;
+    color: var(--text);
+  }
+  .blog-card-body {
+    padding: 1rem 1.5rem 1.5rem;
+    flex: 1; display: flex; flex-direction: column;
+  }
+  .blog-card p {
+    font-size: 0.85rem; color: var(--text-muted);
+    line-height: 1.6; margin-bottom: 1rem; flex: 1;
+  }
+  .blog-read {
+    font-size: 0.825rem; font-weight: 600;
+    color: var(--blue); text-decoration: none;
+    display: flex; align-items: center; gap: 0.35rem;
+  }
+  .blog-read:hover { text-decoration: underline; }
+  .blog-more {
+    text-align: center; margin-top: 2.5rem;
+  }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border: 2px solid var(--blue);
+    color: var(--blue); font-weight: 600; font-size: 0.9rem;
+    border-radius: 8px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover {
+    background: var(--blue); color: white;
+  }
+
+  /* ── KONTAKT ── */
+  .contact {
+    background: linear-gradient(160deg, var(--blue) 0%, #162f5c 100%);
+    position: relative; overflow: hidden;
+  }
+  .contact::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+  }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 480px; gap: 5rem; align-items: start;
+  }
+  .contact .section-label { color: rgba(200,146,42,0.9); }
+  .contact .section-title { color: white; }
+  .contact .section-lead { color: rgba(255,255,255,0.7); max-width: 420px; }
+  .contact-info {
+    display: flex; flex-direction: column; gap: 1rem;
+    margin-top: 2rem;
+  }
+  .cinfo-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.9rem; color: rgba(255,255,255,0.8);
+  }
+  .cinfo-item strong { color: white; }
+
+  .contact-form {
+    background: white; border-radius: 16px;
+    padding: 2.25rem;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.2);
+  }
+  .form-title {
+    font-family: var(--serif);
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--text); margin-bottom: 1.5rem;
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label {
+    display: block; font-size: 0.8rem; font-weight: 600;
+    color: var(--text); margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: var(--sans); font-size: 0.875rem;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(31,71,136,0.08);
+  }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .form-note {
+    font-size: 0.775rem; color: var(--text-muted);
+    margin-top: 0.75rem; line-height: 1.5;
+  }
+  .form-submit {
+    width: 100%; padding: 0.9rem;
+    background: var(--blue); color: white;
+    border: none; border-radius: 8px;
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover {
+    background: var(--blue-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(31,71,136,0.3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0e1f3d; color: rgba(255,255,255,0.6);
+    padding: 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand {
+    font-family: var(--serif); font-size: 0.95rem;
+    color: white; font-weight: 700;
+  }
+  .footer-brand span { font-weight: 400; color: rgba(255,255,255,0.5); font-size: 0.8rem; display: block; margin-top: 2px; }
+  footer p { font-size: 0.78rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer-links a:hover { color: white; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0; animation: fadeUp 0.6s ease forwards;
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { max-width: 420px; }
+    .forwhom-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .steps::before { display: none; }
+    .about-inner { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .contact-form { max-width: 520px; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .forwhom-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-main">Startuj Legalno</span>
+    <span class="nav-brand-sub">deo Digitalno Legalno</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#usluga">Usluga</a></li>
+    <li><a href="#kako-radi">Kako radi</a></li>
+    <li><a href="#o-nama">O nama</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontaktiraj nas</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag fade-up">Za početnike u digitalnom biznisu</div>
+      <h1 class="hero-title fade-up delay-1">
+        Krenuo si sa <em>idejom.</em><br>
+        Krenimo zajedno sa pravnom osnovom.
+      </h1>
+      <p class="hero-lead fade-up delay-2">
+        Startuj Legalno je program za sve koji žele da pokrenu digitalni biznis bez pravnih grešaka od prvog dana. Ugovori, firma, zaštita podataka, intelektualna svojina — sve što trebaš znati, bez žargona i bez advokatskih cijena.
+      </p>
+      <ul class="hero-checks fade-up delay-3">
+        <li>Objašnjenje svake pravne obaveze na tvom jeziku</li>
+        <li>Dokumenti i odgovori na tvoja konkretna pitanja</li>
+        <li>Savetnik koji razume digitalni biznis — ne samo pravo</li>
+      </ul>
+      <div class="hero-actions fade-up delay-4">
+        <a href="#kontakt" class="btn-primary">Pošalji upit →</a>
+        <a href="#usluga" class="btn-ghost">Šta je uključeno ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-card fade-up delay-2">
+      <div class="hcard-label">Mesečni program</div>
+      <div class="hcard-price">
+        <span class="hcard-price-num">49</span>
+        <span class="hcard-price-unit">EUR / mesec</span>
+      </div>
+      <div class="hcard-note">Trajanje: 12 meseci · Dinarska protivvrednost</div>
+      <div class="hcard-divider"></div>
+      <ul class="hcard-features">
+        <li>
+          <span class="icon">◆</span>
+          <span>Dva pisana pravna pitanja mesečno — odgovor za 48 sati</span>
+        </li>
+        <li>
+          <span class="icon">◆</span>
+          <span>Pristup biblioteci pravnih dokumenata za početnike</span>
+        </li>
+        <li>
+          <span class="icon">◆</span>
+          <span>Mesečni Compliance Brief — šta je novo u regulativi</span>
+        </li>
+        <li>
+          <span class="icon">◆</span>
+          <span>Savetnik koji zna gde su granice i kada ti treba neko drugi</span>
+        </li>
+      </ul>
+      <a href="#kontakt" class="hcard-cta">Zatraži razgovor</a>
+      <div class="hcard-consult">Jednokratna konsultacija <strong>90 EUR</strong> · 60 minuta</div>
+    </div>
+  </div>
+</section>
+
+<!-- ZA KOGA -->
+<section class="forwhom" id="usluga">
+  <div class="section-inner">
+    <div class="section-label">Za koga je ovo</div>
+    <h2 class="section-title">Prepoznaješ li se?</h2>
+    <p class="section-lead">Startuj Legalno je napravljen za ljude koji su na početku — ili koji su već počeli, ali bez pravne osnove. Nije za firme, nije za korporacije.</p>
+
+    <div class="forwhom-grid">
+      <div class="forwhom-card">
+        <div class="forwhom-icon">💻</div>
+        <h3>Freelancer koji kreće</h3>
+        <p>Programiraš, dizajniraš ili pišeš — i ne znaš da li ti treba firma, paušal, ili ni jedno ni drugo. Klijentu si rekao da ćeš "poslati ugovor" — a nikad ga nisi imao.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🎬</div>
+        <h3>Kreator sadržaja</h3>
+        <p>YouTube, Instagram, newsletter — radiš ozbiljan posao, ali nisi siguran šta znači potpisati "brand deal" ni ko je vlasnik sadržaja koji si napravio uz pomoć AI-ja.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🛒</div>
+        <h3>E-commerce početnik</h3>
+        <p>Otvorio si prodavnicu ili planiraš da otvoriš. Kupci iz EU, podaci, povraćaj robe — ne znaš šta moraš da imaš na sajtu a šta je samo preporuka.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🤖</div>
+        <h3>AI preduzetnik</h3>
+        <p>Praviš alat, automatizaciju ili AI proizvod. Uzbudljivo — ali ko je odgovoran za output? Šta kažeš klijentu u ugovoru? Koje regulative postoje?</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">📚</div>
+        <h3>Online edukator</h3>
+        <p>Kurs, koučing, konsalting na daljinu. Ko je vlasnik materijala? Šta se dešava ako korisnik nije zadovoljan? Kako naplaćuješ EU klijente legalno?</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🌍</div>
+        <h3>Digitalni nomad iz Srbije</h3>
+        <p>Živiš ili planiraš da živiš mobilno, ali imaš klijente iz celog sveta. Firma u Srbiji, račun u ino banci, ugovor na engleskom — kako to sve složiti?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KAKO RADI -->
+<section class="how" id="kako-radi">
+  <div class="section-inner">
+    <div class="section-label">Proces</div>
+    <h2 class="section-title">Kako izgleda saradnja</h2>
+    <p class="section-lead">Nema automatizovanih odgovora, nema botova. Svaki klijent prolazi kroz selekciju — jer nam je stalo da pomognemo pravim osobama na pravi način.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Šalješ upit</h3>
+        <p>Ispuniš kratku kontakt formu. Pitamo te samo osnove — ko si i šta planiraš.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Dobijaš intake formular</h3>
+        <p>Detaljniji upitnik koji nam pomaže da razumemo tvoju situaciju pre razgovora.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Uvodna sesija</h3>
+        <p>Razgovor od 30–45 minuta. Mapiramo gde si, šta ti treba i da li smo pravi fit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Potpisuješ i krećeš</h3>
+        <p>Ugovor elektronskim putem. Od prvog dana imaš pristup svim benefitima programa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O NAMA -->
+<section class="about" id="o-nama">
+  <div class="section-inner">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="about-badge">◆ Digitalno Legalno</div>
+        <div class="section-label">Ko smo</div>
+        <h2 class="section-title">Ekspertiza koja razume digitalni svet</h2>
+        <p>Startuj Legalno je program u okviru brenda <strong>Digitalno Legalno</strong> — compliance konsaltinga specijalizovanog za digitalne preduzetnike u Srbiji i regionu.</p>
+        <p>Iza projekta stoji jedinstven spoj koji ne postoji kod konkurencije: <strong>master prava i digitalnih tehnologija</strong> sa specijalizacijom u GDPR, AI Act i ugovornom pravu, i <strong>15+ godina bankarskog iskustva</strong> u radu sa klijentima i finansijskim savetovanjem.</p>
+        <p>Razumemo pravni okvir. Razumemo digitalni biznis. I razumemo da svaki početnik ima drugačiju situaciju koja zahteva konkretan, primeran savet — a ne generički odgovor.</p>
+
+        <div class="about-credentials">
+          <div class="credential">
+            <div class="credential-icon">⚖️</div>
+            <div class="credential-text">
+              <strong>Pravna ekspertiza</strong>
+              Master prava i digitalnih tehnologija · GDPR · AI Act · IP · Ugovorni odnosi
+            </div>
+          </div>
+          <div class="credential">
+            <div class="credential-icon">🏦</div>
+            <div class="credential-text">
+              <strong>Poslovno iskustvo</strong>
+              15+ godina u bankarskom sektoru · Finansijsko savetovanje · Rad sa klijentima
+            </div>
+          </div>
+          <div class="credential">
+            <div class="credential-icon">🛡️</div>
+            <div class="credential-text">
+              <strong>Doktrina DNK</strong>
+              Zaštita neregulisanog digitalnog kapitala — vrednost koju ne vidiš ali je gubiš bez pravne osnove
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-quote">
+        <blockquote>
+          "Digitalni preduzetnici gube hiljade evra godišnje ne zbog loših ideja, već zbog ugovora koji ih ne štite, propuštenih regulatornih obaveza i intelektualne svojine na koju nemaju papire. To je kapital koji postoji — samo ga treba zaštititi."
+        </blockquote>
+        <div class="quote-author">
+          <div class="qa-avatar">DL</div>
+          <div class="qa-info">
+            <strong>Digitalno Legalno</strong>
+            <span>startuj-legalno.rs · digitalno-legalno.rs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="section-inner">
+    <div class="section-label">Blog za početnike</div>
+    <h2 class="section-title">Praktični vodiči. Bez žargona.</h2>
+    <p class="section-lead">Sve što bi trebalo da znaš pre nego što potpišeš nešto, otvoriš firmu ili pustiš sajt u svet.</p>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Firma i paušal</span>
+          <h3>Paušal ili d.o.o. — šta da otvoriš kad počinješ kao freelancer?</h3>
+        </div>
+        <div class="blog-card-body">
+          <p>Najčešće pitanje svakog početnika. Odgovor zavisi od toga koliko planiraš da zarađuješ, ko su ti klijenti i da li želiš da ograničiš ličnu odgovornost.</p>
+          <a href="#" class="blog-read">Čitaj vodič →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Ugovori</span>
+          <h3>Zašto "dogovorismo se u mejlu" nije isto što i ugovor</h3>
+        </div>
+        <div class="blog-card-body">
+          <p>Mejl može biti pravno relevantan — ali samo ako znaš šta mora da piše. I zašto potpisani ugovor štiti tebe, a ne samo klijenta.</p>
+          <a href="#" class="blog-read">Čitaj vodič →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">GDPR i podaci</span>
+          <h3>Imaš kontakt formu na sajtu. Da li ti treba Privacy Policy?</h3>
+        </div>
+        <div class="blog-card-body">
+          <p>Kratki odgovor: da. Duži odgovor: objašnjavamo šta mora da piše, zašto je legitimni interes valjan osnov i šta se dešava ako nemaš ništa.</p>
+          <a href="#" class="blog-read">Čitaj vodič →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-more">
+      <a href="#" class="btn-outline">Svi tekstovi →</a>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label">Kontakt</div>
+        <h2 class="section-title">Pričamo?</h2>
+        <p class="section-lead">Pošalji nam kratki upit. Nema automatskog odgovora — čitamo svaki i vraćamo se u roku od jednog radnog dana.</p>
+
+        <div class="contact-info">
+          <div class="cinfo-item">
+            <span>✉</span>
+            <span><strong>hello@startuj-legalno.rs</strong></span>
+          </div>
+          <div class="cinfo-item">
+            <span>🌐</span>
+            <span>startuj-legalno.rs · <a href="https://digitalno-legalno.rs" style="color:rgba(255,255,255,0.7)">digitalno-legalno.rs</a></span>
+          </div>
+          <div class="cinfo-item">
+            <span>📅</span>
+            <span>Odgovaramo radnim danima · do 24h</span>
+          </div>
+          <div class="cinfo-item" style="margin-top:0.5rem; padding: 1rem; background: rgba(255,255,255,0.07); border-radius: 8px; max-width: 360px;">
+            <span style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.6;">Podaci koje ostavljaš obrađuju se u skladu sa <a href="#" style="color:rgba(200,146,42,0.9)">Privacy Policy</a> na osnovu legitimnog interesa za odgovor na tvoj upit.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-title">Pošalji upit</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ime *</label>
+            <input type="text" placeholder="Tvoje ime">
+          </div>
+          <div class="form-group">
+            <label>Prezime</label>
+            <input type="text" placeholder="Prezime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email adresa *</label>
+          <input type="email" placeholder="tvoj@email.com">
+        </div>
+        <div class="form-group">
+          <label>Čime se baviš ili planiraš da se baviš?</label>
+          <select>
+            <option value="" disabled selected>Izaberi delatnost</option>
+            <option>Freelance programiranje / razvoj softvera</option>
+            <option>Dizajn (grafički, UI/UX)</option>
+            <option>Digitalni marketing / SEO</option>
+            <option>Kreator sadržaja</option>
+            <option>SaaS ili digitalni produkt</option>
+            <option>E-commerce</option>
+            <option>Online edukacija / koučing</option>
+            <option>Nešto drugo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>U čemu ti možemo pomoći?</label>
+          <textarea placeholder="Kratko opiši situaciju — nema loših odgovora, samo nam pomaže da se pripremimo."></textarea>
+        </div>
+        <button class="form-submit" type="button">Pošalji upit →</button>
+        <p class="form-note">Slanjem upita prihvataš obradu podataka u svrhu odgovora na kontakt. Nisi ničemu obavezan — ovo je samo razgovor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">
+      Startuj Legalno
+      <span>Deo brenda Digitalno Legalno</span>
+    </div>
+  </div>
+  <p>© 2026. Sva prava zadržana.</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Uslovi korišćenja</a>
+    <a href="https://digitalno-legalno.rs">Digitalno Legalno →</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+// Bootstrap theme settings for Startuj Legalno
+// Keep all variable overrides BEFORE Bootstrap import.
+@use "fonts";
+
+// Color system
+$white: #ffffff;
+$black: #0a0f1c;
+$gray-100: #f6f8fb;
+$gray-200: #e9edf5;
+$gray-300: #d8deea;
+$gray-500: #6b7280;
+$gray-600: #5a6478;
+$gray-700: #3f4758;
+$gray-900: #1e2433;
+
+$primary: #1f3c88; // trust blue
+$brand-blue: #1f4788;
+$brand-navy: #1a1a2e;
+$secondary: #8b1e3f; // legal accent
+$success: #2c8b5f;
+$info: #2e7da6;
+$warning: #b7791f;
+$danger: #b42318;
+$light: $gray-100;
+$dark: $gray-900;
+
+$theme-colors: (
+  "primary": $primary,
+  "brand-blue": $brand-blue,
+  "brand-navy": $brand-navy,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark
+);
+
+// Base UI tones
+$body-bg: $white;
+$body-color: $gray-700;
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-color: #17306e;
+
+// Typography
+$font-family-sans-serif: "Inter", "Segoe UI", sans-serif;
+$headings-font-family: "Poppins", "Segoe UI", sans-serif;
+$headings-font-weight: 600;
+$headings-color: $gray-700;
+$font-size-base: 1rem;
+$line-height-base: 1.65;
+
+$h1-font-size: 3.5rem;
+$h2-font-size: 2.25rem;
+$h3-font-size: 1.625rem;
+$h4-font-size: 1.25rem;
+$h5-font-size: 1.125rem;
+$h6-font-size: 1rem;
+
+
+$display-font-sizes: (
+  1: $h1-font-size * 1.1,
+  2: $h2-font-size * 1.2,
+  3: $h3-font-size,
+  4: $font-size-base * 1
+);
+
+// Spacing scale
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  2_5: $spacer * .625,
+  3: $spacer * .75,
+  4: $spacer * 1.5,
+  5: $spacer * 2.25,
+  6: $spacer * 3.5,
+  7: $spacer * 5,
+  8: $spacer * 6,
+  9: $spacer * 7,
+  10: $spacer * 8
+);
+
+// Components
+$border-radius: .5rem;
+$border-radius-sm: .375rem;
+$border-radius-lg: .75rem;
+$border-color: $gray-200;
+$box-shadow-sm: 0 .125rem .35rem rgba($black, .08);
+$box-shadow: 0 .5rem 1.5rem rgba($black, .12);
+$box-shadow-lg: 0 1rem 2.5rem rgba($black, .16);
+
+// Buttons and forms
+$btn-font-weight: 600;
+$btn-padding-y: .625rem;
+$btn-padding-x: 1.25rem;
+$btn-border-radius: .5rem;
+$input-padding-y: 0.425rem;
+$input-padding-x: 0.875rem;
+$input-border-radius: .5rem;
+$input-border-color: $gray-300;
+
+// Grid config (custom 30-column system retained)
+$grid-columns: 30;
+$grid-gutter-width: 0;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 375px,
+  md: 600px,
+  lg: 768px,
+  xl: 1024px,
+  xxl: 1160px
+);
+$container-max-widths: (
+  xs: 90%,
+  sm: 94%,
+  md: 96%,
+  lg: 96%,
+  xl: 96%,
+  xxl: 1200px
+);
+
+// Bootstrap partial build (only modules used in the theme).
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Base
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+
+// Components actually used
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/transitions";
+
+// Utility classes used heavily in templates (spacing, flex, display, text, bg...).
+@import "bootstrap/scss/utilities/api";
+
+@mixin make-container($padding-x: 0) {
+  width: 100%;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-right: auto;
+  margin-left: auto;
+}

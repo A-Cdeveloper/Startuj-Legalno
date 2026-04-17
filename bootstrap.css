@@ -1,0 +1,2 @@
+/* Compatibility wrapper for cached/legacy bootstrap.css requests. */
+@import url("./bootstrap.min.css");

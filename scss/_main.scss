@@ -1,0 +1,303 @@
+$primary: #1f3c88; // trust blue
+$brand-blue: #1f4788;
+$brand-navy: #1a1a2e;
+$secondary: #d4a843; // legal accent
+$success: #2c8b5f;
+$info: #2e7da6;
+$warning: #b7791f;
+$danger: #b42318;
+$light: #f6f8fb;
+$dark: #1e2433;
+
+/* Zajednički tokeni za kartice (početna, pricing, …) */
+$home-card-radius: .5rem;
+$home-card-border: 1px solid rgba($dark, .1);
+$home-card-shadow: 0 1px 8px rgba($dark, .08);
+$home-card-shadow-hover: 0 4px 8px rgba($dark, .12);
+
+body {
+	font-family: "Inter", "Segoe UI", sans-serif;
+	font-weight: 400;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	main {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		/* nested flex: child može da popuni visinu */
+	}
+}
+
+/* Skip link — prvi fokus, bez Bootstrap utility klasa u style.css */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	z-index: 100000;
+	padding: .65rem 1.15rem;
+	background: $primary;
+	color: #fff !important;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 0 0 .35rem .35rem;
+
+	&:focus {
+		left: 1rem;
+		outline: 2px solid #fff;
+		outline-offset: 2px;
+	}
+}
+
+/* WordPress paginacija / navigacija — naslov za čitače ekrana (ne sme biti vidljiv) */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+
+blockquote {
+	margin: 1.75rem 0;
+	padding: 0 0 0 1.25rem;
+	border-left: 4px solid $primary;
+	border-radius: 0;
+	font-style: italic;
+	font-weight: 700;
+	color: rgba($dark, .95);
+}
+
+blockquote p {
+	margin: 0;
+	font-size: inherit;
+	line-height: 1.65;
+}
+
+
+/* Zajednički naslov sekcije (h2) — početna, pricing, facts, druge stranice */
+.section-heading {
+	font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+	font-weight: 700;
+	color: $brand-navy;
+	line-height: 1.2;
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 2rem;
+
+}
+
+/*=============================================
+=            Header           =
+=============================================*/
+
+.site-header {
+	background: rgba(white, 1);
+	border-bottom: 1px solid rgba(31, 71, 136, .12);
+	box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+
+.row {
+	max-width: 100%;
+}
+
+#logo {
+	.logo-link {
+		display: inline-flex;
+		align-items: end;
+		gap: .6rem;
+		text-decoration: none;
+	}
+
+	img {
+		width: auto;
+		height: 50px;
+		object-fit: contain;
+	}
+
+	.logo__title {
+		font-size: clamp(1rem, 2vw, 1.3rem);
+		font-family: "Poppins", "Segoe UI", sans-serif;
+
+		@media (max-width: 768px) {
+			font-size: 1.3rem;
+		}
+
+		font-weight: 700;
+		color: $primary;
+	}
+
+	.logo__subtitle {
+		font-size: .8rem;
+		color: #666;
+		font-weight: 400;
+		display: block;
+		margin-top: -.5rem;
+	}
+}
+
+/*=============================================
+=            Menu           =
+=============================================*/
+.site-nav .navbar-nav {
+	padding: 0 !important;
+}
+
+.site-nav .nav-link {
+	padding: .3rem .5rem !important;
+	font-size: .9rem;
+	font-weight: 600;
+	color: rgba(26, 26, 46, .55);
+	border-radius: .45rem;
+	transition: .2s ease;
+	text-transform: uppercase;
+	font-family: "Poppins", "Segoe UI", sans-serif;
+	letter-spacing: .025em;
+	white-space: nowrap;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .current-menu-item>.nav-link {
+	color: $primary;
+	background: rgba(31, 71, 136, .08);
+}
+
+.site-nav__cta {
+	padding: .3rem 1rem !important;
+	border-radius: .6rem;
+	font-size: .85rem !important;
+	font-weight: 500 !important;
+	background: $primary;
+	color: #ffffff;
+	box-shadow: 0 4px 12px rgba(31, 71, 136, .18);
+	flex-shrink: 0;
+}
+
+.site-nav__cta:hover,
+.site-nav__cta:focus {
+	background: #2a5caa;
+	border-color: #2a5caa;
+	color: #ffffff;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+	.site-nav .nav-link {
+		padding: .3rem .3rem !important;
+		font-size: .82rem;
+	}
+}
+
+/*=============================================
+=            Footer           =
+=============================================*/
+
+.site-footer {
+	padding: 1.5rem 0;
+}
+
+.site-footer__title {
+	font-family: "Poppins", "Segoe UI", sans-serif;
+	font-size: clamp(1rem, 2vw, 1rem);
+	font-weight: 600;
+	color: #fff;
+	line-height: 1.2;
+}
+
+.site-footer__subtitle {
+	font-size: .8rem;
+	font-weight: 400;
+	color: rgba(white, .68);
+	display: block;
+	margin-top: .2rem;
+}
+
+.site-footer__copy {
+	font-size: .8rem;
+	color: rgba(white, .72);
+}
+
+.site-footer__menu {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+	}
+}
+
+.site-footer__menu a {
+	font-size: .85rem;
+	color: rgba(white, .78);
+	text-decoration: none;
+
+	@media (max-width: 480px) {
+		font-size: .8rem;
+	}
+}
+
+.site-footer__menu a:hover {
+	color: $brand-blue;
+}
+
+.site-footer__menu .current-menu-item>a,
+.site-footer__menu .current_page_item>a {
+	color: #fff;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.site-footer__menu .current-menu-item>a:hover,
+.site-footer__menu .current_page_item>a:hover {
+	color: #fff;
+}
+
+/* Sekcije u #main-content — fade-in-down na scroll (vidi base.js) */
+@media (prefers-reduced-motion: no-preference) {
+	#main-content section.reveal-on-scroll {
+		opacity: 0;
+		transform: translateY(1.25rem);
+		transition: opacity .55s ease, transform .55s ease;
+	}
+
+	#main-content section.reveal-on-scroll.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#main-content section.reveal-on-scroll {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Parcijali (vide gornje varijable) — @import zbog redosleda i deljenog konteksta */
+@import 'home';
+@import 'last-articles';
+@import 'posts';
+@import 'form';

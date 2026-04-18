@@ -59,6 +59,56 @@ function startuj_legalno_main_menu_link_class( $atts, $item, $args ) {
 add_filter( 'nav_menu_link_attributes', 'startuj_legalno_main_menu_link_class', 10, 3 );
 
 /**
+ * Glavni / mobilni meni: linkovi ka sidrima početne (#startuj, #usluga, #work, …) uvek vode na
+ * početnu URL adresu sajta, ne na pogrešno sačuvan path (npr. /blog/#usluga) kad si na drugoj stranici.
+ *
+ * @param array    $atts Atributi linka.
+ * @param WP_Post  $item Stavka menija.
+ * @param stdClass $args Argumenti menija.
+ * @return array
+ */
+function startuj_legalno_home_anchor_menu_hrefs( $atts, $item, $args ) {
+	$locations = array( 'main_menu', 'responsive_menu' );
+	if ( ! isset( $args->theme_location ) || ! in_array( $args->theme_location, $locations, true ) ) {
+		return $atts;
+	}
+	if ( empty( $atts['href'] ) ) {
+		return $atts;
+	}
+	$parsed = wp_parse_url( $atts['href'] );
+	if ( empty( $parsed['fragment'] ) ) {
+		return $atts;
+	}
+	$fragment = $parsed['fragment'];
+	$allowed  = apply_filters(
+		'startuj_legalno_home_anchor_fragments',
+		array( 'startuj', 'usluga', 'work', 'about', 'blog', 'kontakt', 'pocetak', 'kako-radi' )
+	);
+	if ( ! in_array( $fragment, $allowed, true ) ) {
+		return $atts;
+	}
+	$base         = trailingslashit( home_url( '/' ) );
+	$atts['href'] = esc_url( $base ) . '#' . rawurlencode( $fragment );
+
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'startuj_legalno_home_anchor_menu_hrefs', 9, 3 );
+
+/**
+ * Contact Form 7: bez automatskih <p> na početnoj da landing layout (.form-row / .form-group) ostane ispravan.
+ *
+ * @param bool $use_autop Podrazumevano true.
+ * @return bool
+ */
+function startuj_legalno_wpcf7_autop_front_page( $use_autop ) {
+	if ( is_front_page() ) {
+		return false;
+	}
+	return $use_autop;
+}
+add_filter( 'wpcf7_autop_or_not', 'startuj_legalno_wpcf7_autop_front_page', 10, 1 );
+
+/**
  * Bez istaknute slike za stranice (ostaje uključeno za objave i druge tipove koji je koriste).
  *
  * @return void

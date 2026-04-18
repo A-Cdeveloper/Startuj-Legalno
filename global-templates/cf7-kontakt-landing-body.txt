@@ -1,0 +1,38 @@
+Kopiraj u WP: Kontakt → Contact Forms → tvoja forma → tab „Forma“ (zameni sadržaj).
+Mora biti uključeno automatsko <p> ISKLJUČENO na početnoj — u temi je filter wpcf7_autop_or_not za is_front_page().
+
+---
+
+[response]
+
+<div class="form-title">Pošalji upit</div>
+
+<div class="form-row">
+<div class="form-group">
+<label for="kontakt-ime">Ime *</label>
+[text* kontakt-ime id:kontakt-ime placeholder "Tvoje ime"]
+</div>
+<div class="form-group">
+<label for="kontakt-prezime">Prezime</label>
+[text kontakt-prezime id:kontakt-prezime placeholder "Prezime"]
+</div>
+</div>
+
+<div class="form-group">
+<label for="kontakt-email">Email adresa *</label>
+[email* kontakt-email id:kontakt-email placeholder "tvoj@email.com"]
+</div>
+
+<div class="form-group">
+<label for="kontakt-delatnost">Čime se baviš ili planiraš da se baviš?</label>
+[select kontakt-delatnost id:kontakt-delatnost first_as_label "Izaberi delatnost" "Freelance programiranje / razvoj softvera" "Dizajn (grafički, UI/UX)" "Digitalni marketing / SEO" "Kreator sadržaja" "SaaS ili digitalni produkt" "E-commerce" "Online edukacija / koučing" "Nešto drugo"]
+</div>
+
+<div class="form-group">
+<label for="kontakt-poruka">U čemu ti možemo pomoći?</label>
+[textarea kontakt-poruka id:kontakt-poruka placeholder "Kratko opiši situaciju — nema loših odgovora, samo nam pomaže da se pripremimo."]
+</div>
+
+[submit class:form-submit "Pošalji upit →"]
+
+<p class="form-note">Slanjem upita prihvataš obradu podataka u svrhu odgovora na kontakt. Nisi ničemu obavezan — ovo je samo razgovor.</p>

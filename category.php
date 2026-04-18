@@ -11,7 +11,12 @@ global $wp_query;
 ?>
 
 <main id="main-content" <?php post_class( [ 'blog-archive', 'flex-grow-1', 'container-fluid' ] ); ?>>
+
+
     <div class="container py-4 py-lg-6 px-3 px-xl-6">
+        <header class="mb-4">
+            <h1 class="single-post__title"><?php esc_html_e( 'Blog', 'startuj-legalno' ); ?></h1>
+        </header>
 
         <?php get_template_part( 'global-templates/blog', 'category-pills' ); ?>
 

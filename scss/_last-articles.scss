@@ -1,48 +1,94 @@
-/* Blok poslednjih članaka (global-templates/last-articles.php) */
+/* Blok poslednjih članaka (global-templates/last-articles.php) — layout kao .blog u landing maketi */
 
 .last-articles {
-	background: linear-gradient(180deg, #f5f8fc 0%, #eef2f8 100%);
+	background: #fff;
+
+
+	&__inner {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+
+	}
+
+	.section-title {
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		font-weight: 700;
+		line-height: 1.25;
+		color: $brand-navy;
+		margin-bottom: 1rem;
+		letter-spacing: -0.01em;
+	}
+
+	.section-lead {
+		font-size: 1rem;
+		color: rgba($dark, 0.72);
+		line-height: 1.7;
+
+		margin-bottom: 0;
+	}
+}
+
+.last-articles__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.75rem;
+	margin-top: 3rem;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 992px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 .last-articles__card {
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	height: 100%;
-	padding: 1.35rem 1.25rem 1.4rem;
-	background: #fff;
+	border-radius: 0.75rem;
+	overflow: hidden;
 	border: $home-card-border;
-	border-radius: $home-card-radius;
-	box-shadow: 0 1px 4px rgba($dark, .06);
-	transition: box-shadow .2s ease, transform .2s ease;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
 
 	&:hover {
-		box-shadow: $home-card-shadow-hover;
-		transform: translateY(-2px);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 32px rgba($primary, 0.1);
 	}
+}
+
+.last-articles__card-top {
+	background: mix(#fff, $brand-blue, 94%);
+	padding: 1rem 1.5rem 1rem 1.5rem;
 }
 
 .last-articles__tag {
 	display: inline-block;
-	margin-bottom: 1rem;
-	padding: .2rem .7rem;
-	font-size: .72rem;
-	font-weight: 600;
-	letter-spacing: .02em;
+	margin-bottom: 0.75rem;
+	padding: 0.2rem 0.6rem;
+	font-size: 0.65rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	color: $primary;
-	border: 1px solid rgba($primary, .45);
-	border-radius: 999px;
-	background: rgba($primary, .04);
+	color: $brand-blue;
+	background: rgba($primary, 0.05) !important;
+	border-radius: 0.25rem;
 }
 
 .last-articles__title {
-	font-size: 1.1rem;
-	line-height: 1.35;
-	margin: 0 0 .45rem;
+
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.4;
+	color: $dark;
+	margin: 0;
 
 	a {
 		color: inherit;
 		text-decoration: none;
-		transition: color .2s ease;
+		transition: color 0.2s ease;
 
 		&:hover {
 			color: $primary;
@@ -50,9 +96,30 @@
 	}
 }
 
-.last-articles__meta {
-	margin: 0;
-	font-size: .85rem;
-	line-height: 1.45;
-	color: rgba($dark, .55);
+.last-articles__card-body {
+	padding: 1rem 1.5rem 1.5rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+}
+
+.last-articles__excerpt {
+	font-size: 0.85rem;
+	color: rgba($dark, 0.65);
+	line-height: 1.6;
+	margin: 0 0 1rem;
+	flex: 1;
+}
+
+.last-articles__read {
+	font-size: 0.825rem;
+	font-weight: 600;
+	color: $primary;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	margin-top: auto;
+	width: fit-content;
 }

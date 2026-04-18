@@ -1,0 +1,171 @@
+/* Početna — .about (#about). Struktura kao u startuj_legalno_landing; stilovi pod .about */
+
+.about {
+	background: mix(#fff, $brand-blue, 92%);
+
+	.about__inner {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
+
+
+	.section-title {
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		font-weight: 700;
+		line-height: 1.25;
+		color: $brand-navy;
+		margin-bottom: 1rem;
+		letter-spacing: -0.01em;
+	}
+
+	.about__content {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 4rem;
+		align-items: center;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+	}
+
+	.about-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: #fff;
+		border: 1px solid rgba($dark, 0.12);
+		padding: 0.5rem 1rem;
+		border-radius: 100px;
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: $primary;
+		margin-bottom: 1.5rem;
+	}
+
+	.about-text p {
+		font-size: 0.95rem;
+		color: rgba($dark, 0.72);
+		line-height: 1.8;
+		margin-bottom: 1rem;
+
+		strong {
+			color: $dark;
+			font-weight: 600;
+		}
+	}
+
+	.about-credentials {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 1.75rem;
+	}
+
+	.credential {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		background: #fff;
+		border-radius: $home-card-radius;
+		border: $home-card-border;
+	}
+
+	.credential-icon {
+		font-size: 1.1rem;
+		flex-shrink: 0;
+		margin-top: 1px;
+	}
+
+	.credential-text {
+		font-size: 0.85rem;
+		color: $dark;
+		line-height: 1.5;
+
+		strong {
+			color: $primary;
+			display: block;
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin-bottom: 0.2rem;
+		}
+	}
+
+	.about-quote {
+		background: #fff;
+		border-radius: 1rem;
+		padding: 2rem 1.75rem;
+		border: $home-card-border;
+		box-shadow: $home-card-shadow;
+		position: relative;
+		max-width: 80%;
+		margin: 0 auto;
+
+		@media (max-width: 768px) {
+			max-width: 100%;
+		}
+
+		&::before {
+			content: '\201C';
+			font-family: Georgia, 'Times New Roman', serif;
+			font-size: 5rem;
+			line-height: 0.7;
+			color: rgba($primary, 0.2);
+			position: absolute;
+			top: 1.25rem;
+			left: 1.5rem;
+		}
+	}
+
+	.about-quote blockquote {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 1.05rem;
+		font-style: italic;
+		line-height: 1.75;
+		color: rgba($dark, 0.60) !important;
+		margin: 0 0 1.5rem;
+		padding-top: 1.25rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.quote-author {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid rgba($dark, 0.1);
+	}
+
+	.qa-avatar {
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, $primary, mix(#fff, $primary, 35%));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 1rem;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.qa-info {
+		font-size: 0.825rem;
+
+		strong {
+			display: block;
+			color: $dark;
+			font-weight: 600;
+		}
+
+		span {
+			color: rgba($dark, 0.6);
+		}
+	}
+}

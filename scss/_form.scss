@@ -9,31 +9,36 @@
 	font-size: 0.9rem;
 }
 
+.wpcf7-form {
+	position: relative !important;
+}
+
 .form-control,
 .wpcf7-form .form-control,
 .wpcf7-form textarea.form-control {
 	border-radius: $home-card-radius;
 	border: 1px solid rgba($dark, 0.18);
 	padding: 0.45rem 0.85rem;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	line-height: 1.5;
 	color: $dark;
 	background-color: #fff;
 	transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
+
 	&::placeholder {
-		font-size: 0.875rem;
+		font-size: 0.8125rem;
 		font-weight: 400;
 		color: rgba($dark, 0.45);
 		opacity: 1;
 	}
 
 	&::-webkit-input-placeholder {
-		font-size: 0.875rem;
+		font-size: 0.8125rem;
 	}
 
 	&::-moz-placeholder {
-		font-size: 0.875rem;
+		font-size: 0.8125rem;
 	}
 
 	&:focus {
@@ -71,4 +76,144 @@ textarea.form-control,
 	border-radius: $home-card-radius;
 	font-size: 0.9rem;
 	border-width: 1px;
+}
+
+/* Kontakt na početnoj — bela kartica + landing .form-row / .form-group (CF7 u contact.php) */
+.home_contact__form.contact-form {
+	background: #fff;
+	border-radius: 1rem;
+	padding: 2.25rem;
+	box-shadow: 0 16px 64px rgba(0, 0, 0, 0.2);
+	color: $dark;
+
+	.wpcf7 {
+		margin: 0;
+	}
+
+	.form-title {
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: $dark;
+		margin-bottom: 1.5rem;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+
+		@media (max-width: 575px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.form-group {
+		margin-bottom: 1.1rem;
+	}
+
+	.form-group label {
+		display: block;
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: $dark;
+		margin-bottom: 0.4rem;
+	}
+
+	.form-group .wpcf7-form-control-wrap {
+		display: block;
+	}
+
+	.form-group input:not([type="submit"]),
+	.form-group select,
+	.form-group textarea {
+		width: 100%;
+		padding: 0.45rem 0.85rem;
+		border-radius: $home-card-radius;
+		border: 1px solid rgba($dark, 0.18);
+		font-family: 'Inter', 'Segoe UI', sans-serif;
+		font-size: 0.9rem;
+		line-height: 1.5;
+		color: $dark;
+		background-color: #fff;
+		transition: border-color 0.15s ease, box-shadow 0.15s ease;
+		outline: none;
+		box-sizing: border-box;
+
+		&::placeholder {
+			font-size: 0.9rem;
+			font-weight: 400;
+			color: rgba($dark, 0.45);
+			opacity: 1;
+		}
+
+		&::-webkit-input-placeholder {
+			font-size: 0.9rem;
+		}
+
+		&::-moz-placeholder {
+			font-size: 0.9rem;
+		}
+
+		&:focus {
+			border-color: rgba($primary, 0.55);
+			box-shadow: 0 0 0 0.2rem rgba($primary, 0.15);
+		}
+	}
+
+	.form-group textarea {
+		height: 5.5rem !important;
+		resize: vertical;
+	}
+
+	input.form-submit,
+	input[type="submit"].form-submit,
+	input[type="submit"].wpcf7-submit {
+		width: 100%;
+		display: block;
+		max-width: 100%;
+		padding: 0.9rem 1.35rem;
+		margin-top: 0.5rem;
+		margin-left: auto;
+		margin-right: 0;
+		background: $primary;
+		color: #fff;
+		border: none;
+		border-radius: $home-card-radius;
+		font-size: 0.95rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background 0.2s ease, box-shadow 0.2s ease;
+		box-sizing: border-box;
+
+		@media (max-width: 990px) {
+			width: auto;
+		}
+	}
+
+	input.form-submit:hover,
+	input[type="submit"].wpcf7-submit:hover {
+		background: mix(#000, $primary, 12%);
+		box-shadow: 0 4px 16px rgba($primary, 0.3);
+
+
+	}
+
+	.form-note {
+		font-size: 0.775rem;
+		color: rgba($dark, 0.55);
+		margin: 0.75rem 0 0;
+		line-height: 1.5;
+	}
+
+	.wpcf7-spinner {
+		margin: 0.5rem auto 0;
+		position: absolute;
+		bottom: 65px;
+		right: 20px;
+		background: rgba(white, 0.5) !important;
+		border-radius: 50%;
+		padding: 0.5rem;
+		font-size: 0.8125rem;
+		font-weight: 400;
+	}
 }

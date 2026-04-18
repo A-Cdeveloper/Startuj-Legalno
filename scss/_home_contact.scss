@@ -1,0 +1,119 @@
+/* Početna — #kontakt (.home_contact), kao .contact u landing maketi */
+
+.home_contact {
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(160deg, $primary 0%, #162f5c 100%);
+	color: rgba(#fff, 0.88);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -100px;
+		right: -100px;
+		width: 500px;
+		height: 500px;
+		background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+		pointer-events: none;
+	}
+
+	.container {
+		position: relative;
+		z-index: 1;
+	}
+
+	.section-title {
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		font-weight: 700;
+		line-height: 1.25;
+		color: #fff;
+		margin-bottom: 1rem;
+		letter-spacing: -0.01em;
+	}
+
+	.section-lead {
+		font-size: 1rem;
+		line-height: 1.7;
+		color: rgba(#fff, 0.72);
+		max-width: 28rem;
+		margin-bottom: 0;
+	}
+}
+
+.home_contact__inner {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+	align-items: start;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+
+	@media (min-width: 992px) {
+		grid-template-columns: 1fr minmax(280px, 480px);
+		gap: 4rem;
+	}
+}
+
+.home_contact__info {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.85rem 0;
+	margin-top: 2rem;
+}
+
+.home_contact__info-row {
+	display: grid;
+	grid-template-columns: 1.25rem minmax(0, 1fr);
+	column-gap: 0.85rem;
+	row-gap: 0;
+	align-items: start;
+	font-size: 0.9rem;
+	line-height: 1.45;
+	color: rgba(#fff, 0.82);
+
+	strong {
+		color: #fff;
+		font-weight: 600;
+	}
+}
+
+.home_contact__info-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 1.35em;
+	font-size: 1.05rem;
+	line-height: 1;
+}
+
+.home_contact__link {
+	color: rgba(#fff, 0.88);
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+
+	&:hover {
+		color: #fff;
+	}
+}
+
+.home_contact__notice {
+	margin-top: 0.5rem;
+	padding: 1rem;
+	background: rgba(#fff, 0.07);
+	border-radius: 0.5rem;
+	max-width: 22.5rem;
+	font-size: 0.8rem;
+	line-height: 1.6;
+	color: rgba(#fff, 0.62);
+
+	a {
+		color: rgba($secondary, 0.95);
+		text-decoration: underline;
+		text-underline-offset: 0.12em;
+
+		&:hover {
+			color: mix(#fff, $secondary, 22%);
+		}
+	}
+}

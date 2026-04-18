@@ -75,21 +75,7 @@ h6 {
 }
 
 
-blockquote {
-	margin: 1.75rem 0;
-	padding: 0 0 0 1.25rem;
-	border-left: 4px solid $primary;
-	border-radius: 0;
-	font-style: italic;
-	font-weight: 700;
-	color: rgba($dark, .95);
-}
 
-blockquote p {
-	margin: 0;
-	font-size: inherit;
-	line-height: 1.65;
-}
 
 
 /* Zajednički naslov sekcije (h2) — početna, pricing, facts, druge stranice */
@@ -174,8 +160,10 @@ blockquote p {
 }
 
 .site-nav .nav-link:hover,
+.site-nav .nav-link.active,
+.site-nav a.active,
 .site-nav .current-menu-item>.nav-link {
-	color: $primary;
+	color: $primary !important;
 	background: rgba(31, 71, 136, .08);
 }
 
@@ -297,7 +285,12 @@ blockquote p {
 }
 
 /* Parcijali (vide gornje varijable) — @import zbog redosleda i deljenog konteksta */
-@import 'home';
+
+@import 'home_features';
+@import 'home_recognize';
+@import 'home_how';
+@import 'home_about';
 @import 'last-articles';
+@import 'home_contact';
 @import 'posts';
-@import 'form';
+@import 'form'; /* posle home_contact — sadrži .home_contact__form.contact-form */
